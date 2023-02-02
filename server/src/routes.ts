@@ -65,7 +65,7 @@ export async function appRoutes(app: FastifyInstance) {
 
     const completedHabits = day?.dayHabits.map(dayHabit => {
       return dayHabit.habit_id
-    })
+    }) ?? []
 
     return {
       possibleHabits,
@@ -98,7 +98,7 @@ export async function appRoutes(app: FastifyInstance) {
       })
 
     }
-//ESTOU BUSCANDO NA TABELA HAY HABITS SE O USUÁRIO JA TINHA MARCADO O HABITO COMO
+//ESTOU BUSCANDO NA TABELA DAY HABITS SE O USUÁRIO JA TINHA MARCADO O HABITO COMO
 // COMPLETO NESTE DIA
     const dayhabit = await prisma.dayHabit.findUnique({
     where:{
